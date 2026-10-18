@@ -114,6 +114,22 @@ class CircularDoublyLinkedList:
             current = current.next
         return result
 
+    def find_song_by_artist(self, artist_name):
+        if artist_name is None:
+            return []
+        artist_name = artist_name.strip().lower()
+        if artist_name == "":
+            return []
+
+        current = self.head
+        result = []
+        for _ in range(self.size):
+            artist_check = current.data.artist.lower()
+            if artist_name in artist_check:
+                result.append(current.data)
+            current = current.next
+        return result
+
     def total_duaration(self):
         current = self.head
         tong = 0
@@ -179,6 +195,9 @@ class HistoryStack:
         if self._is_empty():
             return False
         return self.elements[self.size - 1]
+
+    def to_list(self):
+        return self.elements[::-1]
 
 
         
