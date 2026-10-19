@@ -30,9 +30,9 @@ def ask_int(msg):
 
 
 def pick_from_library():
-    for song in library.values():
+    for song in library.values(): # tạo ra một cái list toàn là values của dict
         print(f"  {song.song_id}. {song}")
-    return library.get(ask_int("ID bài: "))     # không có thì None
+    return library.get(ask_int("ID bài: "))     # get là truyền vào key, trả ra value, không có thì None
 
 
 def is_current(song_id):
@@ -42,7 +42,7 @@ def is_current(song_id):
 
 while True:
     print("\n[1] Phát bài  [2] Thêm vào playlist  [3] Xoá khỏi playlist  [4] Đổi chỗ  [5] Xem playlist")
-    print("[6] Next  [7] Back  [8] Shuffle  [9] Repeat  [0] Thoát")
+    print("[6] Next  [7] Back  [8] Shuffle  [9] Repeat  [10] Xem lịch sử nghe  [0] Thoát")
     choice = input("Chọn: ").strip()
 
     if choice == "1":                                   # phát ngay, tự tạo playlist nếu rỗng
@@ -50,13 +50,13 @@ while True:
         if song is None:
             print("Không có bài này")
         else:
-            show(player.play_song(song))
+            show(player.play_immediately(song))
 
     elif choice == "2":
         song = pick_from_library()
         if song is None:
             print("Không có bài này")
-        elif playlist.find_node_by_id(song.song_id):
+        elif playlist.find_song_by_id(song.song_id):
             print("Bài này đã có trong playlist")
         else:
             playlist.append(song)
@@ -107,6 +107,14 @@ while True:
         i = modes.index(player.repeat_mode)
         player.set_repeat_mode(modes[(i + 1) % 3])
         print("Repeat:", player.repeat_mode.value)
+
+    elif choice == "10":
+        songs = player.get_history()
+        if not songs:
+            print("Lịch sử nghe đang trống")
+        print("Lịch sử nghe: ")
+        for i, song in enumerate(songs, 1):
+            print(f"  {i}. {song}")
 
     elif choice == "0":
         print("Bye 👋")

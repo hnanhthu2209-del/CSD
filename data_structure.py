@@ -98,6 +98,24 @@ class CircularDoublyLinkedList:
             current = current.next
         return False
 
+    def find_song_by_id(self, id):
+        current = self.head
+        for _ in range(self.size):
+            if current.data.song_id == id:
+                return current
+            current = current.next
+        return None
+
+    def swap_song(self, id1, id2):
+        if id1 == id2:
+            return False
+        node1 = self.find_song_by_id(id1)
+        node2 = self.find_song_by_id(id2)
+        if node1 is None or node2 is None:
+            return False
+        node1.data, node2.data = node2.data, node1.data
+        return True
+        
     def find_song_by_name(self, keyword):
         if keyword is None:
             return []
@@ -198,6 +216,10 @@ class HistoryStack:
 
     def to_list(self):
         return self.elements[::-1]
+
+    def clear(self):
+        self.elements = []
+        self.size = 0
 
 
         

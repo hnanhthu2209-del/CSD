@@ -1,8 +1,8 @@
 from data_structure import HistoryStack
 from algorithms import shuffle
-from enum import enum
+from enum import Enum
 
-class RepeatMode(enum):
+class RepeatMode(Enum):
     OFF = "off"
     ALL = "all"
     ONE = "one"
@@ -25,6 +25,12 @@ class Player:
             nodes.append(current)
             current = current.next
         return nodes
+
+    def get_history(self):
+        songs = [node.data for node in self.history.to_list()]
+        if self.current is not None:
+            songs.insert(0, self.current.data)
+        return songs
 
     def _start_shuffle(self): # only for shuffle and id update
         self.shuffle_order = shuffle(self._get_node())
