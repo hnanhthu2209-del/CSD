@@ -82,7 +82,7 @@ while True:
         id2 = ask_int("ID bài thứ hai: ")
         if is_current(id1) or is_current(id2):
             print("Không đổi chỗ bài đang phát nha")
-        elif playlist.swap_songs(id1, id2):
+        elif playlist.swap_song(id1, id2):
             player.playlist_changed()
             print("Đã đổi chỗ")
         else:
@@ -100,7 +100,7 @@ while True:
         else:
             show(song)
     elif choice == "8":
-        on = player.toggle_shuffle()
+        on = player._toggle_shuffle()
         print("Shuffle:", "BẬT" if on else "TẮT")
     elif choice == "9":
         modes = list(RepeatMode)

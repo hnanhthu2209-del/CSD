@@ -1,13 +1,13 @@
 class Song:
-    def __init__(self, song_id, name, artist, genre, duaration):
+    def __init__(self, song_id, name, artist, genre, duration):
         self.song_id = song_id
         self.name = name
         self.artist = artist
         self.genre = genre
-        self.duaration = duaration
+        self.duration = duration
 
     def __str__(self):
-        return f"{self.name} - {self.artist} ({self.duaration})"
+        return f"{self.name} - {self.artist} ({self.duration})"
 
 class SongNode:
     def __init__(self, song):
@@ -148,11 +148,11 @@ class CircularDoublyLinkedList:
             current = current.next
         return result
 
-    def total_duaration(self):
+    def total_duration(self):
         current = self.head
         tong = 0
         for _ in range(self.size):
-            tong += current.data.duaration
+            tong += current.data.duration
             current = current.next
         return tong
 
