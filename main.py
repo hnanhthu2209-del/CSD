@@ -100,7 +100,7 @@ while True:
         else:
             show(song)
     elif choice == "8":
-        on = player._toggle_shuffle()
+        on = player.toggle_shuffle()
         print("Shuffle:", "BẬT" if on else "TẮT")
     elif choice == "9":
         modes = list(RepeatMode)
@@ -112,9 +112,10 @@ while True:
         songs = player.get_history()
         if not songs:
             print("Lịch sử nghe đang trống")
-        print("Lịch sử nghe: ")
-        for i, song in enumerate(songs, 1):
-            print(f"  {i}. {song}")
+        else:
+            print("Lịch sử nghe: ")
+            for i, song in enumerate(songs, 1):
+                print(f"  {i}. {song}")
 
     elif choice == "0":
         print("Bye 👋")

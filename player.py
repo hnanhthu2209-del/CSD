@@ -39,7 +39,7 @@ class Player:
         self.shuffle_order = shuffle(self._get_node())
         self.shuffle_index = 0
 
-    def _resuffle_keep_current(self):
+    def _reshuffle_keep_current(self):
         # shuffle nhưng giữ lại bài đầu
         self._start_shuffle()
         if self.current is None:
@@ -48,10 +48,10 @@ class Player:
             self.shuffle_order.remove(self.current) # remove node có cùng giá trị với self.current
             self.shuffle_order.insert(0, self.current)
     
-    def _toggle_shuffle(self):
+    def toggle_shuffle(self):
         self.shuffle_on = not self.shuffle_on
         if self.shuffle_on and self.playlist.size > 0:
-            self._resuffle_keep_current()
+            self._reshuffle_keep_current()
         return self.shuffle_on
     
     def _next_shuffle(self):
@@ -81,7 +81,7 @@ class Player:
         self.current = node
         self.is_playing = True
         if self.shuffle_on:
-            self._resuffle_keep_current()
+            self._reshuffle_keep_current()
         return song
 
     def play(self):
@@ -98,7 +98,7 @@ class Player:
     def playlist_changed(self):
         self.history.clear()
         if self.shuffle_on and self.playlist.size > 0:
-                self._resuffle_keep_current()
+                self._reshuffle_keep_current()
 
     def next(self):
         if self.current is None:
