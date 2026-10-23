@@ -26,6 +26,9 @@ class Player:
             current = current.next
         return nodes
 
+    def get_current_song(self):
+        return None if self.current is None else self.current.data
+
     def get_history(self):
         songs = [node.data for node in self.history.to_list()]
         if self.current is not None:
@@ -43,7 +46,7 @@ class Player:
             self.current = self.shuffle_order[0]
         else:
             self.shuffle_order.remove(self.current) # remove node có cùng giá trị với self.current
-            self.shuffle.order.insert(0, self.current)
+            self.shuffle_order.insert(0, self.current)
     
     def _toggle_shuffle(self):
         self.shuffle_on = not self.shuffle_on
@@ -61,6 +64,12 @@ class Player:
 
         self.current = self.shuffle_order[self.shuffle_index]
         return self.current.data
+
+    def set_repeat_mode(self, mode):
+        if not isinstance(mode, RepeatMode):
+            return False
+        self.repeat_mode = mode
+        return True
 
     def play_immediately(self, song):
         node = self.playlist.find_song_by_id(song.song_id)
