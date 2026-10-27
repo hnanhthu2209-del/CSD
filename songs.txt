@@ -1,0 +1,4 @@
+1|Bai 1|Ca si A|pop|200
+2|Bai 2|Ca si B|ballad|180
+3|Bai 3|Ca si C|rap|240
+4|Bai 4|Ca si D|pop|210

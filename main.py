@@ -1,14 +1,31 @@
 from data_structure import Song, CircularDoublyLinkedList
 from player import Player, RepeatMode
 
-# ----- Thư viện bài hát có sẵn: {song_id: Song} -----
-library = {
-    1: Song(1, "Bai 1", "Ca si A", "pop", 200),
-    2: Song(2, "Bai 2", "Ca si B", "ballad", 180),
-    3: Song(3, "Bai 3", "Ca si C", "rap", 240),
-    4: Song(4, "Bai 4", "Ca si D", "pop", 210),
-}
 
+def load_songs(path):
+    songs = {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line is None:
+                    continue
+                parts = line.split("|")
+                if len(parts) != 5: # nếu thiếu thông tin thì bỏ qua
+                    continue
+                try:
+                    song_id = int(parts[0])
+                    duration = int(parts[4])
+                except ValueError:
+                    continue
+                songs[song_id] = Song(song_id, parts[1], parts[2], parts[3], duration)
+
+    except FileNotFoundError:
+        print("File rỗng")
+    return songs
+
+# ----- Thư viện bài hát có sẵn: {song_id: Song} -----
+library = load_songs("songs.txt")
 playlist = CircularDoublyLinkedList()    
 player = Player(playlist)
 
