@@ -108,8 +108,8 @@ class Player:
         if self.current is None:
             return self.play()
         if self.repeat_mode == RepeatMode.ONE:
-            self.history.push(self.current)
             return self.current.data
+        self.history.push(self.current)
         if self.shuffle_on:
             return self._next_shuffle()
         if self.repeat_mode == RepeatMode.OFF and self.current.next == self.playlist.head:
