@@ -59,7 +59,7 @@ def is_current(song_id):
 
 while True:
     print("\n[1] Phát bài  [2] Thêm vào playlist  [3] Xoá khỏi playlist  [4] Đổi chỗ  [5] Xem playlist")
-    print("[6] Next  [7] Back  [8] Shuffle  [9] Repeat  [10] Xem lịch sử nghe  [0] Thoát")
+    print("[6] Next  [7] Back  [8] Shuffle  [9] Repeat  [10] Xem lịch sử nghe [11] Tìm bài (theo tên/nghệ sĩ)  [0] Thoát")
     choice = input("Chọn: ").strip()
 
     if choice == "1":                                   # phát ngay, tự tạo playlist nếu rỗng
@@ -133,6 +133,24 @@ while True:
             print("Lịch sử nghe: ")
             for i, song in enumerate(songs, 1):
                 print(f"  {i}. {song}")
+
+    elif choice == "11":
+        print("Tìm theo: [1] Tên bài  [2] Nghệ sĩ")
+        mode = input("Chọn: ").strip()
+        if mode not in ("1", "2"):
+            print("Lựa chọn không hợp lệ")
+        else:
+            keyword = input("Nhập từ khoá: ")
+            if mode == "1":
+                found = playlist.find_song_by_name(keyword)
+            else:
+                found = playlist.find_song_by_artist(keyword)
+            if not found:
+                print("Không tìm thấy bài nào trong playlist")
+            else:
+                print(f"Tìm thấy {len(found)} bài:")
+                for song in found:
+                    print(f"  [ID {song.song_id}] {song}")
 
     elif choice == "0":
         print("Bye 👋")

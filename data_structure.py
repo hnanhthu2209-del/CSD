@@ -29,34 +29,22 @@ class CircularDoublyLinkedList:
             self.size += 1
             return True
 
-        self.head.prev.next = new_node
-        new_node.prev = self.head.prev
+        tail = self.head.prev
+        tail.next = new_node
+        new_node.prev = tail
         new_node.next = self.head
         self.head.prev = new_node
         self.size += 1
         return True
 
     def append_at_position(self, song, pos):
-        new_node = SongNode(song)
-        if self.size == 0:
-            self.head = new_node
-            new_node.next = new_node
-            new_node.prev = new_node
-            self.size += 1
-            return True
-
         if pos < 0 or pos > self.size:
             return False
-        elif pos == 0:
-            tail = self.head.prev
-            new_node.next = self.head
-            new_node.prev = tail
-            tail.next = new_node
-            self.head.prev = new_node
-            self.head = new_node
-            self.size += 1
-            return True
-   
+
+        if pos == self.size:  # chèn cuối (bao gồm cả trường hợp danh sách rỗng)
+            return self.append(song)
+
+        new_node = SongNode(song)
         current = self.head
         for _ in range(pos):
             current = current.next
@@ -64,6 +52,8 @@ class CircularDoublyLinkedList:
         new_node.prev = current.prev
         new_node.next = current
         current.prev = new_node
+        if pos == 0:
+            self.head = new_node
         self.size += 1
         return True
 

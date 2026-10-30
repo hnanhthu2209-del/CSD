@@ -42,9 +42,7 @@ class Player:
     def _reshuffle_keep_current(self):
         # shuffle nhưng giữ lại bài đầu
         self._start_shuffle()
-        if self.current is None:
-            self.current = self.shuffle_order[0]
-        else:
+        if self.current is not None and self.current in self.shuffle_order:
             self.shuffle_order.remove(self.current) # remove node có cùng giá trị với self.current
             self.shuffle_order.insert(0, self.current)
     
@@ -59,6 +57,7 @@ class Player:
         if self.shuffle_index >= len(self.shuffle_order):
             if self.repeat_mode == RepeatMode.OFF: # trường hợp này shuffle bật và repeat tắt
                 self.current = None
+                self.is_playing = False
                 return None
             self._start_shuffle()
 
@@ -93,23 +92,29 @@ class Player:
                 self.current = self.shuffle_order[0]
             else:
                 self.current = self.playlist.head
+        self.is_playing = True
         return self.current.data
 
     def playlist_changed(self):
         self.history.clear()
-        if self.shuffle_on and self.playlist.size > 0:
-                self._reshuffle_keep_current()
+        if self.playlist.size == 0:
+            self.current = None
+            self.shuffle_order = []
+            self.shuffle_index = 0
+        elif self.shuffle_on:
+            self._reshuffle_keep_current()
 
     def next(self):
         if self.current is None:
             return self.play()
-        self.history.push(self.current)
         if self.repeat_mode == RepeatMode.ONE:
+            self.history.push(self.current)
             return self.current.data
         if self.shuffle_on:
             return self._next_shuffle()
         if self.repeat_mode == RepeatMode.OFF and self.current.next == self.playlist.head:
             self.current = None
+            self.is_playing = False
             return None
         self.current = self.current.next
         return self.current.data
@@ -121,4 +126,5 @@ class Player:
         self.current = node
         if self.shuffle_on and self.shuffle_index > 0:
             self.shuffle_index -= 1
+        self.is_playing = True
         return node.data
