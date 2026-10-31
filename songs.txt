@@ -1,18 +1,22 @@
-1|Chung Ta Cua Hien Tai|Son Tung M-TP|pop|289
-2|Nang Tho|Hoang Dung|ballad|254
-3|See Tinh|Hoang Thuy Linh|pop|185
-4|Mang Tien Ve Cho Me|Den Vau|rap|246
-5|Waiting For You|MONO|pop|266
-6|Mot Dem Say|Thinh Suy|indie|218
-7|La Lung|Vu|indie|261
-8|Co Chang Trai Viet Len Cay|Phan Manh Quynh|ballad|310
-9|2 Phut Hon|Phao|rap|192
-10|Hongkong1|Nguyen Trong Tai|indie|255
-11|Thang Dien|JustaTee|pop|238
-12|Gieo Que|Hoang Thuy Linh|pop|204
-13|Tron Tim|Den Vau|rap|252
-14|Anh Nha O Dau The|AMEE|pop|215
-15|Suyt Nua Thi|Andiez|ballad|273
-16|Buoc Qua Mua Co Don|Vu|indie|268
-17|Ngay Khac La|Den Vau|rap|227
-18|cat doi noi sau|Tang Duy Tan|pop|182
+1|Bai 1|Ca si A|pop|200
+2|Bai 2|Ca si B|ballad|180
+3|Bai 3|Ca si C|rap|240
+4|Bai 4|Ca si D|pop|210
+5|Chung Ta Cua Hien Tai|Son Tung M-TP|pop|289
+6|Nang Tho|Hoang Dung|ballad|254
+7|See Tinh|Hoang Thuy Linh|pop|185
+8|Mang Tien Ve Cho Me|Den Vau|rap|246
+9|Waiting For You|MONO|pop|266
+10|Mot Dem Say|Thinh Suy|indie|218
+11|La Lung|Vu|indie|261
+12|Co Chang Trai Viet Len Cay|Phan Manh Quynh|ballad|310
+13|2 Phut Hon|Phao|rap|192
+14|Hongkong1|Nguyen Trong Tai|indie|255
+15|Thang Dien|JustaTee|pop|238
+16|Gieo Que|Hoang Thuy Linh|pop|204
+17|Tron Tim|Den Vau|rap|252
+18|Anh Nha O Dau The|AMEE|pop|215
+19|Suyt Nua Thi|Andiez|ballad|273
+20|Buoc Qua Mua Co Don|Vu|indie|268
+21|Ngay Khac La|Den Vau|rap|227
+22|cat doi noi sau|Tang Duy Tan|pop|182
